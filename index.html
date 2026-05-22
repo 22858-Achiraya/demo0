@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | น้องปั้นหยา</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #4a90e2;
+            --light-blue: #e6f2ff;
+            --dark-blue: #1a365d;
+            --white: #ffffff;
+            --gray: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.15);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .header-bg {
+            background: linear-gradient(135deg, #63a4ff 0%, #83eaf1 100%);
+            height: 140px;
+            position: relative;
+        }
+
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--white);
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid var(--white);
+        }
+
+        .avatar-container i {
+            font-size: 50px;
+            color: var(--primary-blue);
+        }
+
+        .profile-content {
+            padding: 80px 30px 40px 30px;
+            text-align: center;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .nickname {
+            font-size: 18px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 25px;
+            background: var(--light-blue);
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+
+        .info-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            padding: 14px 20px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f0f4f8;
+            transition: all 0.2s ease;
+        }
+
+        .info-item:hover {
+            border-color: var(--primary-blue);
+            background: var(--light-blue);
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .icon-birthday { background: #ffe9e9; color: #ff5e5e; }
+        .icon-food { background: #ffe0cc; color: #ff7c3b; }
+        .icon-color { background: #e0f2fe; color: #0284c7; }
+
+        .info-label {
+            font-size: 14px;
+            color: var(--gray);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .info-text {
+            font-size: 16px;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .color-dots {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 1px solid #cbd5e1;
+        }
+        .dot-blue { background-color: #38bdf8; }
+        .dot-white { background-color: #ffffff; }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: var(--gray);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <div class="header-bg">
+            <div class="avatar-container">
+                <i class="fa-solid fa-face-smile-wink"></i>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <h1 class="name">ด.ญ. อชิรญา สมคำหล้า</h1>
+            <span class="nickname">น้องปั้นหยา</span>
+
+            <div class="info-list">
+                <div class="info-item">
+                    <div class="info-icon icon-birthday">
+                        <i class="fa-solid fa-cake-candles"></i>
+                    </div>
+                    <div>
+                        <span class="info-label">วันเกิด</span>
+                        <span class="info-text">26 พฤษภาคม 2554</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon icon-food">
+                        <i class="fa-solid fa-fish-fins"></i>
+                    </div>
+                    <div>
+                        <span class="info-label">อาหารที่ชอบ</span>
+                        <span class="info-text">แซลมอน (Salmon)</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon icon-color">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div>
+                        <span class="info-label">สีที่ชอบ</span>
+                        <span class="info-text">
+                            สีฟ้า และ สีขาว
+                            <span class="color-dots">
+                                <span class="dot dot-blue"></span>
+                                <span class="dot dot-white"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>ยินดีที่ได้รู้จักค่ะ <i class="fa-solid fa-heart" style="color: #ff5e5e;"></i></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
