@@ -11,11 +11,14 @@
     
     <style>
         :root {
-            --primary-blue: #4a90e2;
-            --light-blue: #e6f2ff;
-            --dark-blue: #1a365d;
+            --primary-blue: #3b82f6;
+            --main-blue: #1d4ed8;
+            --dark-blue: #0f172a;
+            --light-blue: #eff6ff;
+            --accent-blue: #dbeafe;
             --white: #ffffff;
             --gray: #64748b;
+            --cat-black: #334155;
         }
 
         * {
@@ -31,227 +34,495 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        .profile-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+        /* A4 Container Setup */
+        .a4-container {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--white);
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.15);
-            width: 100%;
-            max-width: 450px;
+            box-shadow: 0 15px 35px rgba(29, 78, 216, 0.1);
             overflow: hidden;
-            transition: transform 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        .profile-card:hover {
-            transform: translateY(-5px);
+        /* Top Hero Banner */
+        .header-banner {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e3a8a 100%);
+            height: 260px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 50px 40px 50px;
         }
 
-        .header-bg {
-            background: linear-gradient(135deg, #63a4ff 0%, #83eaf1 100%);
+        /* Cute Black Cat Floating on Banner */
+        .banner-cat {
+            position: absolute;
+            right: 60px;
+            bottom: 0;
+            font-size: 110px;
+            color: var(--cat-black);
+            filter: drop-shadow(2px -2px 0px rgba(255,255,255,0.2));
+            z-index: 1;
+        }
+
+        .profile-intro {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar-wrapper {
+            width: 140px;
             height: 140px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 5px solid var(--white);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
         }
 
-        .avatar-container {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: var(--white);
+        .avatar-wrapper i {
+            font-size: 70px;
+            color: var(--primary-blue);
+        }
+
+        /* Small Cat Ear Decor on Avatar */
+        .avatar-wrapper::before {
+            content: '🐈‍⬛';
             position: absolute;
-            bottom: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 4px solid var(--white);
+            top: -22px;
+            left: -10px;
+            font-size: 32px;
+            transform: rotate(-20px);
         }
 
-        .avatar-container i {
-            font-size: 50px;
-            color: var(--primary-blue);
+        .main-title-meta {
+            color: var(--white);
         }
 
-        .profile-content {
-            padding: 80px 30px 40px 30px;
-            text-align: center;
-        }
-
-        .name {
-            font-size: 24px;
+        .main-title-meta h1 {
+            font-size: 32px;
             font-weight: 700;
-            color: var(--dark-blue);
             margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        .nickname {
+        .tag-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nickname-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--white);
             font-size: 18px;
-            color: var(--primary-blue);
             font-weight: 600;
-            margin-bottom: 25px;
-            background: var(--light-blue);
-            display: inline-block;
-            padding: 4px 16px;
+            padding: 4px 18px;
             border-radius: 20px;
         }
 
-        .info-list {
-            text-align: left;
-            margin-top: 20px;
+        .sub-badge {
+            background: #fef08a;
+            color: #854d0e;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
         }
 
-        .info-item {
+        /* Main Content Layout */
+        .content-body {
+            padding: 40px 50px;
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Section Styling */
+        .section-box {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            padding: 24px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--main-blue);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            background: var(--white);
-            padding: 14px 20px;
-            border-radius: 16px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-            border: 1px solid #f0f4f8;
-            transition: all 0.2s ease;
+            gap: 10px;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 8px;
         }
 
-        .info-item:hover {
-            border-color: var(--primary-blue);
+        .section-title i {
+            color: var(--primary-blue);
+        }
+
+        /* Grid Data List */
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .data-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .data-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             background: var(--light-blue);
-        }
-
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
+            color: var(--primary-blue);
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 15px;
-            font-size: 18px;
-        }
-
-        .icon-birthday { background: #ffe9e9; color: #ff5e5e; }
-        .icon-food { background: #ffe0cc; color: #ff7c3b; }
-        .icon-color { background: #e0f2fe; color: #0284c7; }
-        .icon-subject { background: #f3e8ff; color: #a855f7; }
-        .icon-friends { background: #e6fbf1; color: #10b981; } /* คลาสสีใหม่สำหรับเพื่อนสนิท */
-
-        .info-label {
-            font-size: 14px;
-            color: var(--gray);
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .info-text {
             font-size: 16px;
-            color: var(--dark-blue);
-            font-weight: 600;
+            flex-shrink: 0;
         }
 
-        .color-dots {
+        .data-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .data-label {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .data-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+
+        /* Pills/Tags Styling */
+        .pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill {
+            background: var(--light-blue);
+            color: var(--main-blue);
+            border: 1px solid var(--accent-blue);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pill.pill-orange { background: #fff7ed; color: #c2410c; border-color: #ffedd5; }
+        .pill.pill-purple { background: #faf5ff; color: #6b21a8; border-color: #f3e8ff; }
+        .pill.pill-red { background: #fef2f2; color: #b91c1c; border-color: #fee2e2; }
+        .pill.pill-green { background: #f0fdf4; color: #15803d; border-color: #dcfce7; }
+
+        /* Color Circle Indicator */
+        .color-preview {
             display: inline-flex;
             gap: 6px;
-            align-items: center;
-            vertical-align: middle;
-            margin-left: 8px;
+            margin-left: 5px;
         }
-
-        .dot {
+        .circle {
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            display: inline-block;
             border: 1px solid #cbd5e1;
         }
-        .dot-blue { background-color: #38bdf8; }
-        .dot-white { background-color: #ffffff; }
+        .circle-blue { background-color: #38bdf8; }
+        .circle-white { background-color: #ffffff; }
 
-        .footer {
-            margin-top: 25px;
-            font-size: 12px;
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            border-radius: 0 16px 16px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--main-blue);
+            font-style: italic;
+        }
+
+        .quote-box::after {
+            content: '🐈‍⬛';
+            position: absolute;
+            bottom: -5px;
+            right: 15px;
+            font-size: 20px;
+        }
+
+        /* Footer */
+        .footer-banner {
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
             color: var(--gray);
-            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* A4 Printing Optimization */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .a4-container {
+                width: 210mm;
+                height: 297mm;
+                box-shadow: none;
+                border-radius: 0;
+                page-break-after: avoid;
+            }
+            .section-box {
+                box-shadow: none;
+                background: #ffffff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .header-banner {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <div class="header-bg">
-            <div class="avatar-container">
-                <i class="fa-solid fa-face-smile-wink"></i>
+    <div class="a4-container">
+        <div class="header-banner">
+            <div class="banner-cat"><i class="fa-solid fa-cat"></i></div>
+            <div class="profile-intro">
+                <div class="avatar-wrapper">
+                    <i class="fa-solid fa-face-smile-wink"></i>
+                </div>
+                <div class="main-title-meta">
+                    <h1>ด.ญ. อชิรญา สมคำหล้า</h1>
+                    <div class="tag-row">
+                        <span class="nickname-badge">น้องปั้นหยา</span>
+                        <span class="sub-badge">โรงเรียนจอมทอง ชั้น ม.3</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="profile-content">
-            <h1 class="name">ด.ญ. อชิรญา สมคำหล้า</h1>
-            <span class="nickname">น้องปั้นหยา</span>
-
-            <div class="info-list">
-                <div class="info-item">
-                    <div class="info-icon icon-birthday">
-                        <i class="fa-solid fa-cake-candles"></i>
+        <div class="content-body">
+            
+            <div class="left-column">
+                
+                <div class="section-box">
+                    <div class="section-title">
+                        <i class="fa-solid fa-user"></i> ข้อมูลส่วนตัว
                     </div>
-                    <div>
-                        <span class="info-label">วันเกิด</span>
-                        <span class="info-text">26 พฤษภาคม 2554</span>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon icon-food">
-                        <i class="fa-solid fa-fish-fins"></i>
-                    </div>
-                    <div>
-                        <span class="info-label">อาหารที่ชอบ</span>
-                        <span class="info-text">แซลมอน (Salmon)</span>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon icon-color">
-                        <i class="fa-solid fa-palette"></i>
-                    </div>
-                    <div>
-                        <span class="info-label">สีที่ชอบ</span>
-                        <span class="info-text">
-                            สีฟ้า และ สีขาว
-                            <span class="color-dots">
-                                <span class="dot dot-blue"></span>
-                                <span class="dot dot-white"></span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon icon-subject">
-                        <i class="fa-solid fa-book-open-reader"></i>
-                    </div>
-                    <div>
-                        <span class="info-label">วิชาที่ชอบ</span>
-                        <span class="info-text">วิทยาศาสตร์ และ ศิลปะ</span>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                            <div class="data-details">
+                                <span class="data-label">วันเกิด</span>
+                                <span class="data-value">26 พฤษภาคม 2554</span>
+                            </div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fa-solid fa-venus-mars"></i></div>
+                            <div class="data-details">
+                                <span class="data-label">เพศ / กรุ๊ปเลือด</span>
+                                <span class="data-value">หญิง / บี (B)</span>
+                            </div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fa-solid fa-sun"></i></div>
+                            <div class="data-details">
+                                <span class="data-label">ราศี</span>
+                                <span class="data-value">พฤกษภ</span>
+                            </div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fa-solid fa-arrows-up-down"></i></div>
+                            <div class="data-details">
+                                <span class="data-label">ส่วนสูง</span>
+                                <span class="data-value">161 เซนติเมตร</span>
+                            </div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div class="data-details">
+                                <span class="data-label">ภูมิลำเนา</span>
+                                <span class="data-value">จังหวัดเชียงใหม่</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="info-item">
-                    <div class="info-icon icon-friends">
-                        <i class="fa-solid fa-users"></i>
+                <div class="section-box">
+                    <div class="section-title">
+                        <i class="fa-solid fa-users"></i> เพื่อนสนิท
                     </div>
-                    <div>
-                        <span class="info-label">เพื่อนสนิท</span>
-                        <span class="info-text">ตะวัน, แก้ม, อิมเอม, จรินทร์, เมกาน</span>
+                    <div class="pill-container">
+                        <span class="pill"><i class="fa-solid fa-heart"></i> ตะวัน</span>
+                        <span class="pill"><i class="fa-solid fa-heart"></i> แก้ม</span>
+                        <span class="pill"><i class="fa-solid fa-heart"></i> อิมเอม</span>
+                        <span class="pill"><i class="fa-solid fa-heart"></i> จรินทร์</span>
+                        <span class="pill"><i class="fa-solid fa-heart"></i> เมกาน</span>
                     </div>
                 </div>
+
+                <div class="section-box">
+                    <div class="section-title">
+                        <i class="fa-solid fa-star"></i> ความชอบ & ไลฟ์สไตล์
+                    </div>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fa-solid fa-palette"></i></div>
+                            <div class="data-details">
+                                <span class="data-label">สีโปรด</span>
+                                <span class="data-value">
+                                    สีฟ้า และ สีขาว
+                                    <span class="color-preview">
+                                        <span class="circle circle-blue"></span>
+                                        <span class="circle circle-white"></span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fa-solid fa-music"></i></div>
+                            <div class="data-details">
+                                <span class="data-label">ศิลปินที่ชอบ</span>
+                                <span class="data-value">วง Stray Kids</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="footer">
-                <p>ยินดีที่ได้รู้จักค่ะ <i class="fa-solid fa-heart" style="color: #ff5e5e;"></i></p>
+            <div class="right-column">
+                
+                <div class="section-box">
+                    <div class="section-title">
+                        <i class="fa-solid fa-graduation-cap"></i> การเรียน & กิจกรรม
+                    </div>
+                    <div class="data-grid" style="margin-bottom: 15px;">
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                            <div class="data-details">
+                                <span class="data-label">ความฝัน / อาชีพที่อยากเป็น</span>
+                                <span class="data-value" style="color: #059669; font-size: 18px;">ทันตแพทย์ (Dentist)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <span class="data-label" style="display:block; margin-bottom: 6px;">วิชาที่ชอบ:</span>
+                        <div class="pill-container">
+                            <span class="pill pill-green"><i class="fa-solid fa-flask"></i> วิทยาศาสตร์</span>
+                            <span class="pill pill-purple"><i class="fa-solid fa-paint-brush"></i> ศิลปะ</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <span class="data-label" style="display:block; margin-bottom: 6px;">วิชาที่คิดว่ายาก:</span>
+                        <div class="pill-container">
+                            <span class="pill pill-red"><i class="fa-solid fa-laptop-code"></i> คอมพิวเตอร์</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="data-label" style="display:block; margin-bottom: 6px;">ชมรม / กิจกรรม:</span>
+                        <div class="pill-container">
+                            <span class="pill pill-orange"><i class="fa-solid fa-microphone-lines"></i> Karaoke English</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <div class="section-title">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> ทักษะ & งานอดิเรก
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <span class="data-label" style="display:block; margin-bottom: 6px;">ทักษะความสามารถ (Skills):</span>
+                        <div class="pill-container">
+                            <span class="pill"><i class="fa-solid fa-utensils"></i> ทำอาหาร</span>
+                            <span class="pill"><i class="fa-solid fa-pen-nib"></i> วาดภาพ</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <span class="data-label" style="display:block; margin-bottom: 6px;">งานอดิเรก (Hobbies):</span>
+                        <div class="pill-container">
+                            <span class="pill pill-purple"><i class="fa-solid fa-palette"></i> วาดภาพเฟรมผ้าใบ</span>
+                            <span class="pill pill-orange"><i class="fa-solid fa-book"></i> อ่านนิยาย</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="data-label" style="display:block; margin-bottom: 6px;">กีฬา (Sports) / ความบันเทิง:</span>
+                        <div class="pill-container">
+                            <span class="pill pill-green"><i class="fa-solid fa-basketball"></i> บาสเก็ตบอล</span>
+                            <span class="pill"><i class="fa-solid fa-tv"></i> Doctor Stranger / ด้วงกับเธอ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <div class="section-title">
+                        <i class="fa-solid fa-utensils"></i> อาหารโปรด
+                    </div>
+                    <div class="pill-container">
+                        <span class="pill pill-orange"><i class="fa-solid fa-fish"></i> แซลมอน (Salmon)</span>
+                        <span class="pill pill-red"><i class="fa-solid fa-fire"></i> มาม่าเผ็ด</span>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    <div class="quote-text">
+                        "ทำผิดครั้งที่ 100 ดีกว่าไม่ทำอะไรเลย"
+                    </div>
+                </div>
+
             </div>
+
+        </div>
+
+        <div class="footer-banner">
+            ยินดีที่ได้รู้จักทุกคนค่ะ <i class="fa-solid fa-heart" style="color: #ef4444;"></i> ปั้นหยา ม.3 โรงเรียนจอมทอง
         </div>
     </div>
 
