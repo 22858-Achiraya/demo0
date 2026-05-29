@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | น้องปั้นหยา</title>
+    <title>Profile | น้องปั้นหยา (A4 Style)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-blue: #3b82f6;
-            --light-blue: #eff6ff;
-            --mid-blue: #93c5fd;
-            --dark-blue: #1e3a8a;
-            --navy: #0f172a;
+            --primary: #0284c7;      /* ฟ้าเข้ม */
+            --secondary: #38bdf8;    /* ฟ้าสว่าง */
+            --dark-bg: #0f172a;      /* กรมท่า */
+            --sidebar-bg: #1e3a8a;   /* น้ำเงิน */
+            --text-main: #334155;    /* เทาเข้ม */
+            --text-light: #f8fafc;   /* ขาวนวล */
             --white: #ffffff;
-            --gray: #64748b;
-            --light-gray: #f1f5f9;
-            --border-color: #e2e8f0;
+            --accent: #f472b6;       /* ชมพูดอกบัว */
         }
 
         * {
@@ -30,526 +29,426 @@
 
         body {
             font-family: 'Sarabun', sans-serif;
-            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-            min-height: 100vh;
+            background-color: #e2e8f0;
             display: flex;
             justify-content: center;
-            align-items: center;
             padding: 40px 20px;
-            color: var(--navy);
+            color: var(--text-main);
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
 
         /* ----------------------------------
-           A4 Print Styles
+           A4 Document Container
         ----------------------------------- */
+        .a4-wrapper {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
         @page {
-            size: A4 portrait;
+            size: A4;
             margin: 0;
         }
+
         @media print {
             body {
-                background: white !important;
+                background: none;
                 padding: 0;
-                display: block;
             }
-            .profile-card {
-                box-shadow: none !important;
-                border: none !important;
-                max-width: 100% !important;
-                width: 210mm;
-                min-height: 297mm;
-                margin: 0 auto;
-                border-radius: 0 !important;
-                transform: none !important;
-            }
-            .profile-content {
-                padding: 40px 50px !important;
-            }
-            .info-grid {
-                gap: 10px 20px !important;
-            }
-            .info-item {
-                break-inside: avoid;
-                padding: 8px 12px !important;
-            }
-            .header-bg {
-                height: 180px !important;
+            .a4-wrapper {
+                box-shadow: none;
+                width: 100%;
+                height: 100vh;
             }
         }
 
         /* ----------------------------------
-           Layout & Card
+           Sidebar (Left Column)
         ----------------------------------- */
-        .profile-card {
-            background: var(--white);
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
-            width: 100%;
-            max-width: 800px;
-            overflow: hidden;
-            position: relative;
+        .sidebar {
+            width: 35%;
+            background: linear-gradient(160deg, var(--sidebar-bg) 0%, var(--dark-bg) 100%);
+            color: var(--text-light);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* ----------------------------------
-           Header: Pond, Cat, Lotus, Fish
-        ----------------------------------- */
-        .header-bg {
-            background: linear-gradient(180deg, #7dd3fc 0%, #38bdf8 50%, #0284c7 100%);
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 10px solid #334155; /* ขอบสระ */
-        }
-
-        /* Water Ripples */
-        .ripple {
-            position: absolute;
+        /* Circular Avatar Pond */
+        .pond-avatar {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.3);
-            animation: ripple-anim 4s infinite linear;
-        }
-        .ripple-1 { width: 100px; height: 30px; bottom: 20px; left: 20%; }
-        .ripple-2 { width: 150px; height: 40px; bottom: 60px; right: 30%; animation-delay: 2s; }
-        
-        @keyframes ripple-anim {
-            0% { transform: scale(0.8); opacity: 1; }
-            100% { transform: scale(2); opacity: 0; }
+            background: linear-gradient(180deg, #7dd3fc 0%, #0ea5e9 100%);
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        /* Lotus & Leaves */
-        .lotus-pond {
+        /* Elements inside pond */
+        .lotus-icon {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            color: var(--accent);
+            font-size: 24px;
+            top: 20px;
+            left: 20px;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+            transform: rotate(-15deg);
         }
-        .lotus-leaf {
+        .lotus-icon-2 {
+            position: absolute;
+            color: #fb7185;
+            font-size: 18px;
+            top: 40px;
+            right: 25px;
+            transform: rotate(10deg);
+        }
+        .leaf {
             position: absolute;
             background: #4ade80;
+            width: 40px; height: 15px;
             border-radius: 50%;
-            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.15);
+            top: 40px; left: 10px;
         }
-        .lotus-leaf::after {
-            content: '';
-            position: absolute;
-            width: 35%;
-            height: 50%;
-            background: #0284c7; /* สีน้ำ */
-            top: -5px;
-            right: 10%;
-            transform: rotate(15deg);
-            border-radius: 50%;
-        }
-        .leaf-1 { width: 90px; height: 35px; bottom: 50px; left: 10%; transform: rotate(-10deg); }
-        .leaf-2 { width: 60px; height: 25px; bottom: 100px; right: 20%; transform: rotate(25deg); }
-        .leaf-3 { width: 110px; height: 45px; bottom: 30px; right: 5%; }
-        
-        .lotus-flower {
-            position: absolute;
-            color: #f472b6;
-            font-size: 40px;
-            filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2));
-            z-index: 2;
-        }
-        .flower-1 { bottom: 55px; left: 14%; }
-        .flower-2 { bottom: 35px; right: 12%; font-size: 50px; color: #fb7185; }
 
-        /* Swimming Fish */
+        /* Swimming fish animation */
         .fish {
             position: absolute;
             color: #fb923c;
-            font-size: 30px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-            animation: swim-right 12s linear infinite;
-            z-index: 1;
+            font-size: 20px;
+            top: 50%;
+            animation: swim 6s linear infinite;
         }
-        .fish-2 {
-            color: #f87171;
-            font-size: 24px;
-            top: 65%;
-            animation: swim-left 15s linear infinite;
-            animation-delay: 3s;
-            transform: scaleX(-1);
-        }
-        
-        @keyframes swim-right {
-            0% { left: -10%; top: 40%; transform: scaleX(1) translateY(0); }
-            25% { transform: scaleX(1) translateY(-15px); }
-            50% { transform: scaleX(1) translateY(10px); }
-            75% { transform: scaleX(1) translateY(-10px); }
-            100% { left: 110%; top: 50%; transform: scaleX(1) translateY(0); }
-        }
-        @keyframes swim-left {
-            0% { right: -10%; transform: scaleX(-1) translateY(0); }
-            25% { transform: scaleX(-1) translateY(15px); }
-            50% { transform: scaleX(-1) translateY(-5px); }
-            75% { transform: scaleX(-1) translateY(15px); }
-            100% { right: 110%; transform: scaleX(-1) translateY(0); }
+        @keyframes swim {
+            0% { left: -30px; transform: scaleX(1) translateY(0); }
+            50% { transform: scaleX(1) translateY(-10px); }
+            100% { left: 160px; transform: scaleX(1) translateY(0); }
         }
 
-        /* Black Cat */
-        .cat-container {
+        /* Cat sitting at the bottom of the circle */
+        .cat-avatar {
             position: absolute;
-            bottom: -2px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 10;
             color: #0f172a;
-            font-size: 75px;
-            filter: drop-shadow(0 -2px 5px rgba(0,0,0,0.3));
+            font-size: 65px;
+            z-index: 5;
         }
+
+        .nickname {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Sidebar Sections */
+        .side-section {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .side-title {
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .contact-list i {
+            width: 25px;
+            font-size: 16px;
+            color: var(--secondary);
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        /* Skills Pills (Dark Mode) */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skill-tag {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-light);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .skill-tag i { color: var(--secondary); }
 
         /* ----------------------------------
-           Profile Content
+           Main Content (Right Column)
         ----------------------------------- */
-        .profile-content {
-            padding: 40px 50px;
+        .main-content {
+            width: 65%;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .header-info {
-            text-align: center;
+        .header-name {
             margin-bottom: 25px;
         }
-        .name {
-            font-size: 32px;
+        .header-name h1 {
+            font-size: 36px;
             font-weight: 700;
-            color: var(--dark-blue);
-            margin-bottom: 5px;
+            color: var(--sidebar-bg);
+            line-height: 1.2;
         }
-        .school-info {
-            font-size: 16px;
-            color: var(--gray);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .nickname {
+        .header-name p {
             font-size: 18px;
-            color: var(--white);
-            font-weight: 700;
-            background: var(--primary-blue);
-            display: inline-block;
-            padding: 6px 24px;
-            border-radius: 30px;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+            color: var(--primary);
+            font-weight: 500;
+            margin-top: 5px;
         }
 
-        /* Motto Section */
+        /* Motto Alert Box */
         .motto-box {
-            background: var(--light-blue);
-            border-left: 6px solid var(--primary-blue);
-            padding: 16px 20px;
-            border-radius: 0 12px 12px 0;
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
             margin-bottom: 35px;
-            text-align: center;
         }
-        .motto-label {
-            display: block;
-            font-size: 14px;
-            color: var(--primary-blue);
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-        .motto-text {
+        .motto-box p {
             font-size: 18px;
-            color: var(--dark-blue);
             font-style: italic;
             font-weight: 600;
+            color: var(--sidebar-bg);
+        }
+        .motto-box span {
+            display: block;
+            font-size: 12px;
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-        /* Section Titles */
-        .section-title {
+        /* Main Sections */
+        .main-section {
+            margin-bottom: 35px;
+        }
+        .main-title {
             font-size: 20px;
-            color: var(--dark-blue);
             font-weight: 700;
-            margin: 30px 0 15px 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--light-gray);
+            color: var(--sidebar-bg);
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-bottom: 20px;
         }
-        .section-title i { 
-            color: var(--primary-blue); 
-            background: var(--light-blue);
-            padding: 8px;
-            border-radius: 10px;
-            font-size: 16px;
-        }
-
-        /* Data Grids */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px 20px;
-        }
-        @media (max-width: 650px) {
-            .info-grid { grid-template-columns: 1fr; }
-            .profile-content { padding: 30px 20px; }
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            background: var(--white);
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s;
-        }
-        .info-item:hover {
-            border-color: var(--mid-blue);
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-        
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+        .main-title i {
+            background: #e0f2fe;
+            color: var(--primary);
+            width: 35px; height: 35px;
+            border-radius: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 15px;
-            font-size: 18px;
-            flex-shrink: 0;
-            background: var(--light-gray);
-            color: var(--gray);
+            font-size: 16px;
         }
-        .icon-blue { background: var(--light-blue); color: var(--primary-blue); }
 
-        .info-label {
-            font-size: 13px;
-            color: var(--gray);
-            display: block;
-            margin-bottom: 2px;
+        /* Grid Data */
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
-        .info-text {
+        .data-item {
+            background: var(--white);
+        }
+        .data-label {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 3px;
+            display: block;
+        }
+        .data-value {
             font-size: 15px;
             font-weight: 600;
-            color: var(--navy);
-        }
-
-        /* Pills and Tags */
-        .tag-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .pill {
-            background: var(--white);
-            color: var(--dark-blue);
-            border: 1px solid var(--border-color);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
+            color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s;
         }
-        .pill:hover {
-            border-color: var(--primary-blue);
-            background: var(--light-blue);
+        
+        .color-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            border: 1px solid #cbd5e1;
+            display: inline-block;
         }
-        .pill.skill {
-            background: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--primary-blue);
-        }
-        .pill.friend {
-            background: #f0fdf4;
-            border-color: #bbf7d0;
-            color: #166534;
+        
+        .highlight-dream {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 16px;
         }
 
-        /* Color Dots */
-        .color-dots { display: inline-flex; gap: 5px; margin-left: 8px; vertical-align: middle; }
-        .dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid #94a3b8; }
-        .dot-blue { background-color: #3b82f6; }
-        .dot-white { background-color: #ffffff; }
-
-        .footer {
-            margin-top: 40px;
-            text-align: center;
+        /* Friends Pills (Light Mode) */
+        .friend-tag {
+            background: #f1f5f9;
+            color: var(--sidebar-bg);
+            padding: 6px 15px;
+            border-radius: 20px;
             font-size: 14px;
-            color: var(--gray);
-            border-top: 1px dashed var(--border-color);
-            padding-top: 20px;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0 5px 10px 0;
         }
+        .friend-tag i { color: #f43f5e; }
+
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
+    <div class="a4-wrapper">
         
-        <div class="header-bg">
-            <div class="ripple ripple-1"></div>
-            <div class="ripple ripple-2"></div>
+        <div class="sidebar">
             
-            <div class="lotus-pond">
-                <div class="lotus-leaf leaf-1"></div>
-                <div class="lotus-leaf leaf-2"></div>
-                <div class="lotus-leaf leaf-3"></div>
-                
-                <i class="fa-solid fa-spa lotus-flower flower-1"></i>
-                <i class="fa-solid fa-spa lotus-flower flower-2"></i>
-
+            <div class="pond-avatar">
+                <div class="leaf"></div>
+                <i class="fa-solid fa-spa lotus-icon"></i>
+                <i class="fa-solid fa-spa lotus-icon-2"></i>
                 <i class="fa-solid fa-fish fish"></i>
-                <i class="fa-solid fa-fish-fins fish fish-2"></i>
+                <i class="fa-solid fa-cat cat-avatar"></i>
             </div>
 
-            <div class="cat-container">
-                <i class="fa-solid fa-cat"></i>
+            <h2 class="nickname">น้องปั้นหยา</h2>
+
+            <div class="side-section">
+                <h3 class="side-title">Profile Info</h3>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-cake-candles"></i> 26 พฤษภาคม 2554</li>
+                    <li><i class="fa-solid fa-star"></i> ราศีพฤกษภ</li>
+                    <li><i class="fa-solid fa-venus"></i> หญิง | กรุ๊ปเลือด B</li>
+                    <li><i class="fa-solid fa-ruler-vertical"></i> สูง 161 ซม.</li>
+                    <li><i class="fa-solid fa-location-dot"></i> เชียงใหม่</li>
+                </ul>
+            </div>
+
+            <div class="side-section">
+                <h3 class="side-title">Skills</h3>
+                <div class="skill-tags">
+                    <div class="skill-tag"><i class="fa-solid fa-kitchen-set"></i> ทำอาหาร</div>
+                    <div class="skill-tag"><i class="fa-solid fa-pen-nib"></i> วาดภาพ</div>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <h3 class="side-title">Hobbies & Sports</h3>
+                <div class="skill-tags">
+                    <div class="skill-tag"><i class="fa-solid fa-paint-roller"></i> วาดภาพเฟรมผ้าใบ</div>
+                    <div class="skill-tag"><i class="fa-solid fa-book-open-reader"></i> อ่านนิยาย</div>
+                    <div class="skill-tag"><i class="fa-solid fa-basketball"></i> บาสเก็ตบอล</div>
+                </div>
             </div>
         </div>
 
-        <div class="profile-content">
+        <div class="main-content">
             
-            <div class="header-info">
-                <h1 class="name">ด.ญ. อชิรญา สมคำหล้า</h1>
-                <p class="school-info"><i class="fa-solid fa-school"></i> โรงเรียนจอมทอง • ชั้นมัธยมศึกษาปีที่ 3</p>
-                <div class="nickname">น้องปั้นหยา</div>
+            <div class="header-name">
+                <h1>อชิรญา สมคำหล้า</h1>
+                <p><i class="fa-solid fa-school"></i> โรงเรียนจอมทอง • ชั้นมัธยมศึกษาปีที่ 3</p>
             </div>
 
             <div class="motto-box">
-                <span class="motto-label"><i class="fa-solid fa-quote-left"></i> คติประจำใจ <i class="fa-solid fa-quote-right"></i></span>
-                <p class="motto-text">"ทำผิดครั้งที่ 100 ดีกว่าไม่ทำอะไรเลย"</p>
+                <span><i class="fa-solid fa-quote-left"></i> คติประจำใจ</span>
+                <p>"ทำผิดครั้งที่ 100 ดีกว่าไม่ทำอะไรเลย"</p>
             </div>
 
-            <h2 class="section-title"><i class="fa-solid fa-address-card"></i> ข้อมูลส่วนตัว</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <div class="info-icon icon-blue"><i class="fa-solid fa-cake-candles"></i></div>
-                    <div>
-                        <span class="info-label">วันเกิด</span>
-                        <span class="info-text">26 พฤษภาคม 2554</span>
+            <div class="main-section">
+                <h3 class="main-title"><i class="fa-solid fa-graduation-cap"></i> การเรียน & อนาคต</h3>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="data-label">วิชาที่ชอบ</span>
+                        <span class="data-value">วิทยาศาสตร์ และ ศิลปะ</span>
                     </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon icon-blue"><i class="fa-solid fa-venus"></i></div>
-                    <div>
-                        <span class="info-label">เพศ / กรุ๊ปเลือด</span>
-                        <span class="info-text">หญิง / B</span>
+                    <div class="data-item">
+                        <span class="data-label">วิชาที่ยาก</span>
+                        <span class="data-value">คอมพิวเตอร์</span>
                     </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon icon-blue"><i class="fa-solid fa-star"></i></div>
-                    <div>
-                        <span class="info-label">ราศี</span>
-                        <span class="info-text">พฤกษภ</span>
+                    <div class="data-item">
+                        <span class="data-label">ชมรม / กิจกรรม</span>
+                        <span class="data-value">Karaoke English</span>
                     </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon icon-blue"><i class="fa-solid fa-ruler-vertical"></i></div>
-                    <div>
-                        <span class="info-label">ส่วนสูง</span>
-                        <span class="info-text">161 ซม.</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon icon-blue"><i class="fa-solid fa-house-chimney"></i></div>
-                    <div>
-                        <span class="info-label">ภูมิลำเนา</span>
-                        <span class="info-text">จังหวัดเชียงใหม่</span>
+                    <div class="data-item">
+                        <span class="data-label">ความฝัน / อาชีพ</span>
+                        <span class="data-value highlight-dream"><i class="fa-solid fa-tooth"></i> ทันตแพทย์</span>
                     </div>
                 </div>
             </div>
 
-            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> การเรียนและความฝัน</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <div class="info-icon"><i class="fa-solid fa-book-open"></i></div>
-                    <div>
-                        <span class="info-label">วิชาที่ชอบ</span>
-                        <span class="info-text">วิทยาศาสตร์ และ ศิลปะ</span>
+            <div class="main-section">
+                <h3 class="main-title"><i class="fa-solid fa-heart"></i> สิ่งที่ชื่นชอบ</h3>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="data-label">อาหารโปรด</span>
+                        <span class="data-value">แซลมอน, มาม่าเผ็ด</span>
                     </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                    <div>
-                        <span class="info-label">วิชาที่ยาก</span>
-                        <span class="info-text">คอมพิวเตอร์</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="fa-solid fa-microphone-lines"></i></div>
-                    <div>
-                        <span class="info-label">ชมรม / กิจกรรม</span>
-                        <span class="info-text">Karaoke English</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="fa-solid fa-tooth"></i></div>
-                    <div>
-                        <span class="info-label">ความฝัน / อาชีพ</span>
-                        <span class="info-text" style="color: var(--primary-blue);">ทันตแพทย์</span>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="section-title"><i class="fa-solid fa-heart"></i> สิ่งที่ชื่นชอบ</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <div class="info-icon"><i class="fa-solid fa-utensils"></i></div>
-                    <div>
-                        <span class="info-label">อาหารโปรด</span>
-                        <span class="info-text">แซลมอน, มาม่าเผ็ด</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="fa-solid fa-palette"></i></div>
-                    <div>
-                        <span class="info-label">สีโปรด</span>
-                        <span class="info-text">
-                            สีฟ้า และ สีขาว
-                            <span class="color-dots">
-                                <span class="dot dot-blue"></span>
-                                <span class="dot dot-white"></span>
-                            </span>
+                    <div class="data-item">
+                        <span class="data-label">สีโปรด</span>
+                        <span class="data-value">
+                            สีฟ้า, สีขาว
+                            <span class="color-dot" style="background:#38bdf8;"></span>
+                            <span class="color-dot" style="background:#ffffff;"></span>
                         </span>
                     </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="fa-solid fa-headphones"></i></div>
-                    <div>
-                        <span class="info-label">เพลงที่ชอบ</span>
-                        <span class="info-text">เพลงวง Stray Kids</span>
+                    <div class="data-item">
+                        <span class="data-label">ศิลปิน / เพลง</span>
+                        <span class="data-value">เพลงวง Stray Kids</span>
                     </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="fa-solid fa-tv"></i></div>
-                    <div>
-                        <span class="info-label">ซีรีส์ / อนิเมะ</span>
-                        <span class="info-text">Doctor Stone, ด้วงกับเธอ</span>
+                    <div class="data-item">
+                        <span class="data-label">ซีรีส์ / อนิเมะ</span>
+                        <span class="data-value">Dr. Stone, ด้วงกับเธอ</span>
                     </div>
                 </div>
             </div>
 
-            <h2 class="section-title"><i class="fa-solid fa-lightbulb"></i> ทักษะ กีฬา และ งานอดิเรก</h2>
-            <div class="tag-container">
-                <div class="pill skill"><i class="fa-solid fa-kitchen-set"></i> ทำอาหาร</div>
-                <div class="pill skill"><i class="fa-solid fa-pen-nib"></i> วาดภาพ</div>
-                <div class="pill"><i class="fa-solid fa-paint-roller"></i> วาดภาพเฟรมผ้าใบ</div>
-                <div class="pill"><i class="fa-solid fa-book-open-reader"></i> อ่านนิยาย</div>
-                <div class="pill"><i class="fa-solid fa-basketball"></i> บาสเก็ตบอล</div>
+            <div class="main-section" style="margin-top: auto;">
+                <h3 class="main-title"><i class="fa-solid fa-user-group"></i> แก๊งเพื่อนสนิท</h3>
+                <div>
+                    <div class="friend-tag"><i class="fa-solid fa-heart"></i> ตะวัน</div>
+                    <div class="friend-tag"><i class="fa-solid fa-heart"></i> แก้ม</div>
+                    <div class="friend-tag"><i class="fa-solid fa-heart"></i> อิมเอม</div>
+                    <div class="friend-tag"><i class="fa-solid fa-heart"></i> จรินทร์</div>
+                    <div class="friend-tag"><i class="fa-solid fa-heart"></i> เมกาน</div>
+                </div>
             </div>
 
-            <h2 class="section-title"><i class="fa-solid fa-user-group"></i> แก๊งเพื่อนสนิท</h2>
-            <div class="tag-container">
-                <div class="pill friend"><i class="fa-solid fa-face-smile"></i> ตะวัน</div>
-                <div class="pill friend"><i class="fa-solid fa-face-smile"></i> แก้ม</div>
-                <div class="pill friend"><i class="fa-solid fa-face-smile"></i> อิมเอม</div>
-                <div class="pill friend"><i class="fa-solid fa-face-smile"></i> จรินทร์</div>
-                <div class="pill friend"><i class="fa-solid fa-face-smile"></i> เมกาน</div>
-            </div>
-
-            <div class="footer">
-                ยินดีที่ได้รู้จักค่ะ <i class="fa-solid fa-heart" style="color: #f43f5e;"></i>
-            </div>
-            
         </div>
     </div>
 
