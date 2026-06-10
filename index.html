@@ -107,20 +107,22 @@
             100% { right: 110%; transform: scaleX(-1) translateY(0); }
         }
 
-        /* Prominent Giant Black Cat */
-        .giant-cat {
+        /* รูปโปรไฟล์น้องขี่เจ็ตสกีกลางสระน้ำ */
+        .header-profile-img {
             position: absolute;
-            bottom: -8px;
+            bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 140px;
-            color: #0f172a;
+            width: 190px;
+            height: 190px;
+            object-fit: contain;
             z-index: 10;
-            filter: drop-shadow(0 -5px 10px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
         }
+
         /* Cat thought bubble */
         .bubble {
-            position: absolute; bottom: 140px; left: 55%; background: white; padding: 10px 20px;
+            position: absolute; bottom: 155px; left: 56%; background: white; padding: 10px 20px;
             border-radius: 30px; font-weight: bold; color: var(--primary); font-size: 18px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2); animation: float 3s ease-in-out infinite; z-index: 11;
         }
@@ -149,21 +151,6 @@
         .right-col {
             width: 60%;
             padding: 30px 35px;
-        }
-
-        /* Profile Image Box */
-        .profile-img-box {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .profile-img-box img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--white);
-            outline: 3px solid var(--primary);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
         /* Profile Header Box (Overlapping) */
@@ -270,16 +257,14 @@
                 <i class="fa-solid fa-fish-fins fish fish2"></i>
             </div>
 
-            <i class="fa-solid fa-cat giant-cat"></i>
+            <img src="e436338bb2773836250e95a8f069f1f6.jpg" alt="น้องปั้นหยา" class="header-profile-img">
+            
             <div class="bubble">หิวปลาจังเลย เมี้ยว~ <i class="fa-solid fa-fish"></i></div>
         </div>
 
         <div class="content-wrapper">
             
             <div class="left-col">
-                <div class="profile-img-box">
-                    <img src="วาง_URL_รูปภาพตรงนี้.jpg" alt="น้องปั้นหยา">
-                </div>
                 
                 <div class="motto">
                     <span><i class="fa-solid fa-quote-left"></i> คติประจำใจ</span>
@@ -371,32 +356,5 @@
                     </li>
                     <li>
                         <div class="info-icon"><i class="fa-solid fa-tv"></i></div>
-                        <div class="info-label">ซีรีส์/อนิเมะ:</div>
-                        <div class="info-value">Doctor Stone, ด้วงกับเธอ</div>
-                    </li>
-                </ul>
-
-                <h2 class="section-title"><i class="fa-solid fa-bolt"></i> ทักษะ กีฬา และงานอดิเรก</h2>
-                <div class="tags-wrap">
-                    <div class="pill skill"><i class="fa-solid fa-kitchen-set"></i> ทำอาหาร</div>
-                    <div class="pill skill"><i class="fa-solid fa-pen-nib"></i> วาดภาพ</div>
-                    <div class="pill"><i class="fa-solid fa-paint-roller"></i> วาดภาพเฟรมผ้าใบ</div>
-                    <div class="pill"><i class="fa-solid fa-book-open-reader"></i> อ่านนิยาย</div>
-                    <div class="pill"><i class="fa-solid fa-basketball"></i> บาสเก็ตบอล</div>
-                </div>
-
-                <h2 class="section-title"><i class="fa-solid fa-user-group"></i> แก๊งเพื่อนสนิท</h2>
-                <div class="tags-wrap">
-                    <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> ตะวัน</div>
-                    <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> แก้ม</div>
-                    <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> อิมเอม</div>
-                    <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> จรินทร์</div>
-                    <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> เมกาน</div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+                        <div
+            
