@@ -50,7 +50,6 @@
         @media print {
             body { background: none; padding: 0; }
             .a4-page { box-shadow: none; width: 100%; height: 100vh; }
-            .sylus-sticker { filter: none !important; } /* เอาเงาออกตอนพิมพ์เพื่อให้สีไม่เพี้ยน */
         }
 
         /* ----------------------------------
@@ -150,7 +149,7 @@
         .right-col {
             width: 60%;
             padding: 30px 35px;
-            position: relative; /* เพิ่มสำหรับจัดตำแหน่งรูปสติกเกอร์ */
+            position: relative; /* เพิ่มเพื่อให้สติกเกอร์จัดวางตามคอลัมน์นี้ */
         }
 
         /* Profile Header Box (Overlapping) */
@@ -159,22 +158,23 @@
             color: var(--white);
             padding: 15px 25px;
             border-radius: 16px;
-            margin-top: -55px;
+            margin-top: -55px; /* ปรับเพิ่มเพื่อให้รองรับรูปโปรไฟล์ที่ลอยขึ้น */
             margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2);
             text-align: center;
             position: relative;
         }
         
+        /* สไตล์รูปโปรไฟล์ที่เพิ่มเข้ามาใหม่ */
         .profile-avatar {
             width: 110px;
             height: 110px;
             border-radius: 50%;
             border: 5px solid var(--white);
             object-fit: cover;
-            margin-top: -70px;
+            margin-top: -70px; /* ดึงรูปขึ้นไปเกยส่วนหัวสระน้ำ */
             background: var(--light-blue);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 166px rgba(0,0,0,0.15);
             margin-bottom: 10px;
             display: inline-block;
         }
@@ -251,17 +251,14 @@
         .pill.skill { background: var(--primary); color: var(--white); border-color: var(--primary); }
         .pill.friend { background: #fdf2f8; color: #db2777; border-color: #fbcfe8; }
         
-        /* ----------------------------------
-           Sticker Bottom Image (New addition)
-        ----------------------------------- */
-        .sylus-sticker {
+        /* Sylus car sticker */
+        .sylus-car-sticker {
             position: absolute;
-            bottom: 25px;
-            right: 25px;
-            width: 140px; /* ขนาดกำลังดี ไม่ใหญ่เกินไป */
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
-            z-index: 100;
-            transform: rotate(-5deg); /* เอียงเล็กน้อยให้ดูเป็นสติกเกอร์น่ารักๆ */
+            bottom: 20px; /* ปรับระยะจากขอบล่าง */
+            right: 20px; /* ปรับระยะจากขอบขวา */
+            width: 130px; /* ขนาดของสติกเกอร์ */
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25)); /* ใส่เงาให้ดูเป็นสติกเกอร์ */
+            z-index: 100; /* ให้อยู่เหนือเนื้อหาอื่น */
         }
         
     </style>
@@ -406,13 +403,10 @@
                     <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> จรินทร์</div>
                     <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> เมกาน</div>
                 </div>
-                
+                <!-- Sylus car sticker -->
+                <img src="image_7277ad.png" alt="สติกเกอร์แต่ง Sylus" class="sylus-car-sticker">
             </div>
         </div>
-        
-        <!-- รูปตกแต่งเพิ่มเติมที่นำมาแปะไว้มุมขวาล่าง -->
-        <img src="image_728b0c.jpg" alt="Sticker Decor" class="sylus-sticker">
-        
     </div>
 
 </body>
