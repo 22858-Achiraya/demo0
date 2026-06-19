@@ -137,19 +137,19 @@
             display: flex;
             flex: 1;
             background: var(--white);
+            position: relative; /* Container for absolute decor */
         }
 
         .left-col {
             width: 40%;
             background: #f8fafc;
-            padding: 30px 25px;
+            padding: 30px 25px 80px; /* Increased bottom padding */
             border-right: 2px dashed #cbd5e1;
         }
 
         .right-col {
             width: 60%;
-            padding: 30px 35px;
-            position: relative; /* เพิ่มเพื่อให้สติกเกอร์จัดวางตามคอลัมน์นี้ */
+            padding: 30px 35px 80px; /* Increased bottom padding */
         }
 
         /* Profile Header Box (Overlapping) */
@@ -174,7 +174,7 @@
             object-fit: cover;
             margin-top: -70px; /* ดึงรูปขึ้นไปเกยส่วนหัวสระน้ำ */
             background: var(--light-blue);
-            box-shadow: 0 8px 166px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
             margin-bottom: 10px;
             display: inline-block;
         }
@@ -251,14 +251,29 @@
         .pill.skill { background: var(--primary); color: var(--white); border-color: var(--primary); }
         .pill.friend { background: #fdf2f8; color: #db2777; border-color: #fbcfe8; }
         
-        /* Sylus car sticker */
-        .sylus-car-sticker {
+        /* ----------------------------------
+           Decor Container (New)
+        ----------------------------------- */
+        .decor-container {
             position: absolute;
-            bottom: 20px; /* ปรับระยะจากขอบล่าง */
-            right: 20px; /* ปรับระยะจากขอบขวา */
-            width: 130px; /* ขนาดของสติกเกอร์ */
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25)); /* ใส่เงาให้ดูเป็นสติกเกอร์ */
-            z-index: 100; /* ให้อยู่เหนือเนื้อหาอื่น */
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 50; /* Above text */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Sticker drop shadow */
+        }
+        .decor-image {
+            max-width: 130px;
+            border-radius: 12px;
+        }
+        .decor-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
         }
         
     </style>
@@ -403,9 +418,15 @@
                     <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> จรินทร์</div>
                     <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> เมกาน</div>
                 </div>
-                <!-- Sylus car sticker -->
-                <img src="image_7277ad.png" alt="สติกเกอร์แต่ง Sylus" class="sylus-car-sticker">
+
             </div>
+
+            <!-- Decor Container -->
+            <div class="decor-container">
+                <img src="fb8918d676a3c616ee93fc600834cbfa.jpg" alt="Chibi Decor" class="decor-image">
+                <div class="decor-text">ฉันรักปลา เมี้ยว~ <i class="fa-solid fa-fish"></i></div>
+            </div>
+            
         </div>
     </div>
 
