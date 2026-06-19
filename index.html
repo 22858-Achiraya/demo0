@@ -50,6 +50,7 @@
         @media print {
             body { background: none; padding: 0; }
             .a4-page { box-shadow: none; width: 100%; height: 100vh; }
+            .sylus-sticker { filter: none !important; } /* เอาเงาออกตอนพิมพ์เพื่อให้สีไม่เพี้ยน */
         }
 
         /* ----------------------------------
@@ -149,8 +150,7 @@
         .right-col {
             width: 60%;
             padding: 30px 35px;
-            display: flex;
-            flex-direction: column; /* ช่วยจัดเรียงกล่องรูปด้านล่าง */
+            position: relative; /* เพิ่มสำหรับจัดตำแหน่งรูปสติกเกอร์ */
         }
 
         /* Profile Header Box (Overlapping) */
@@ -250,23 +250,18 @@
         
         .pill.skill { background: var(--primary); color: var(--white); border-color: var(--primary); }
         .pill.friend { background: #fdf2f8; color: #db2777; border-color: #fbcfe8; }
-
+        
         /* ----------------------------------
-           Bottom Image Decoration (New)
+           Sticker Bottom Image (New addition)
         ----------------------------------- */
-        .bottom-decoration {
-            margin-top: auto; /* ดันให้ไปอยู่ล่างสุดของคอลัมน์ขวา */
-            text-align: right; /* จัดชิดขวา */
-            padding-top: 20px;
-        }
-
-        .bottom-decoration img {
-            width: 160px; /* ปรับขนาดให้พอดีหน้ากระดาษ */
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border: 4px solid var(--white);
-            transform: rotate(-3deg); /* เอียงรูปเล็กน้อยให้ดูน่ารัก */
-            background-color: var(--white);
+        .sylus-sticker {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            width: 140px; /* ขนาดกำลังดี ไม่ใหญ่เกินไป */
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+            z-index: 100;
+            transform: rotate(-5deg); /* เอียงเล็กน้อยให้ดูเป็นสติกเกอร์น่ารักๆ */
         }
         
     </style>
@@ -411,13 +406,13 @@
                     <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> จรินทร์</div>
                     <div class="pill friend"><i class="fa-solid fa-face-smile-beam"></i> เมกาน</div>
                 </div>
-
-                <div class="bottom-decoration">
-                    <img src="image_728b0c.jpg" alt="Cute Chibi Character">
-                </div>
-
+                
             </div>
         </div>
+        
+        <!-- รูปตกแต่งเพิ่มเติมที่นำมาแปะไว้มุมขวาล่าง -->
+        <img src="image_728b0c.jpg" alt="Sticker Decor" class="sylus-sticker">
+        
     </div>
 
 </body>
